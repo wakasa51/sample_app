@@ -28,4 +28,10 @@ class MicropostTest < ActiveSupport::TestCase
   test "order should be most recent first" do
     assert_equal microposts(:most_recent), Micropost.first
   end
+
+  test "in_reply_to should not be blank" do
+    @micropost.content = "@1-example-user hello hey"
+    @micropost.save
+    assert_not @micropost.in_reply_to.blank?
+  end
  end

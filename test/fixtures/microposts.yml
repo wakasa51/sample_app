@@ -38,6 +38,16 @@ van:
   created_at: <%= 4.hours.ago %>
   user: lana
 
+# Iwan:
+#   content: "@1-michael-example hey, ExAMPle!"
+#   created_at: <%= 10.hours.ago %>
+#   user: lana
+#
+# Ivanca:
+#   content: "@1-michael-example say, hello!"
+#   created_at: <%= 10.hours.ago %>
+#   user: archer
+
 <% 30.times do |n| %>
 micropost_<%= n %>:
   content: <%= Faker::Lorem.sentence(5) %>

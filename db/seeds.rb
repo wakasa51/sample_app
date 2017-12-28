@@ -10,8 +10,11 @@ end
 users = User.order(:created_at).take(6)
 50.times do
   content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(content: content)}
+  reply = ""
+  users.each { |user| user.microposts.create!(content: content, in_reply_to: reply)}
 end
+User.second.microposts.create!(content: "@1-example-user hello example")
+User.second.microposts.create!(content: "@1-example-user @6-Miss-Tre-Denesik hello example and denesik")
 
 # リレーションシップ
 users = User.all
