@@ -22,10 +22,10 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'フォローしていないユーザーからのリプライは見えない' do
+    context 'フォローしていないユーザーからのリプライも見える' do
       it 'unfollowed user check' do
         @unfollow_user_reply.each do |unfollow_user_reply|
-          expect(@user.feed(@user).include?(unfollow_user_reply)).to be false
+          expect(@user.feed(@user).include?(unfollow_user_reply)).to be true
         end
       end
     end
