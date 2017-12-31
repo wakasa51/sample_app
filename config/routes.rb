@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
+      resources :messages, only: [:index, :show, :new, :create]
     end
   end
   resources :account_activations, only: [:edit]

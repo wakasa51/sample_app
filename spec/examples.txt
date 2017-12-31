@@ -1,6 +1,12 @@
-example_id                             | status | run_time        |
--------------------------------------- | ------ | --------------- |
-./spec/models/message_spec.rb[1:1:1:1] | passed | 0.01235 seconds |
-./spec/models/user_spec.rb[1:1:1:1]    | failed | 0.00732 seconds |
-./spec/models/user_spec.rb[1:1:2:1]    | failed | 0.00202 seconds |
-./spec/models/user_spec.rb[1:1:3:1]    | failed | 0.00184 seconds |
+example_id                              | status  | run_time        |
+--------------------------------------- | ------- | --------------- |
+./spec/models/message_spec.rb[1:1]      | passed  | 0.0357 seconds  |
+./spec/models/message_spec.rb[1:2]      | passed  | 0.04516 seconds |
+./spec/models/message_spec.rb[1:3]      | passed  | 0.75895 seconds |
+./spec/models/message_spec.rb[1:4]      | passed  | 0.04674 seconds |
+./spec/models/message_spec.rb[1:5]      | passed  | 0.03282 seconds |
+./spec/models/micropost_spec.rb[1:1]    | pending | 0.00001 seconds |
+./spec/models/relationship_spec.rb[1:1] | pending | 0.00002 seconds |
+./spec/models/user_spec.rb[1:1:1:1]     | passed  | 0.09172 seconds |
+./spec/models/user_spec.rb[1:1:2:1]     | passed  | 0.08776 seconds |
+./spec/models/user_spec.rb[1:1:3:1]     | passed  | 0.13742 seconds |

@@ -4,6 +4,10 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :from_user, class_name:"Message", foreign_key: "from_user_id", dependent: :destroy
+  has_many :to_user, class_name:"Message", foreign_key: "to_user_id", dependent: :destroy
+  has_many :from_user, through: :from_user
+  has_many :to_user, through: :to_user
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
