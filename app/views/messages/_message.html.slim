@@ -1,0 +1,13 @@
+li id="message-#{message.id}"
+  = link_to gravatar_for(message.from_user, size: 50), message.from_user
+  span.user
+    = link_to message.from_user.name, message.from_user
+  span.content
+    = message.content
+    / = image_tag message.picture.url if message.picture?
+  span.timestamp
+    ' Posted
+    = time_ago_in_words(message.created_at)
+    '  ago.
+    - if current_user?(message.from_user)
+      = link_to "delete", user_message_path(id:message.to_user_id, message_num: message.id), method: :delete, data: { confirm: "You sure?" }
