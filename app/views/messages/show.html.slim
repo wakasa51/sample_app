@@ -1,0 +1,9 @@
+.row
+  .col-md-8
+    h3 Messages
+    section.message_form
+      = render 'shared/message_form'
+    -if @messages.any?
+      ol.microposts
+        =render @messages
+      = will_paginate @messages

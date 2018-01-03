@@ -23,3 +23,7 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+User.second.send_messages.create!(content: "Hello Michael", to_user_id: User.first.id, created_at: 10.minutes.ago)
+User.first.send_messages.create!(content: "Hey Archer. How are you?", to_user_id: User.second.id)
+User.third.send_messages.create!(content: "Hi Michael", to_user_id: User.first.id)

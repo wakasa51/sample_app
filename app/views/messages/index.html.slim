@@ -1,0 +1,14 @@
+- provide(:title, 'Message Users')
+h1 Message users
+
+= will_paginate @message_users
+
+ul.users
+  - @message_users.each do |user|
+    li
+      = gravatar_for user, size: 50
+      = link_to user.name, user
+      '  |
+      = link_to "view messages", user_message_path(id: user.id)
+
+= will_paginate @message_users
