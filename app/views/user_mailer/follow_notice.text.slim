@@ -1,0 +1,8 @@
+' Hi
+= @user.name
+' ,
+= "@#{@follower.id}-#{@follower.name.gsub(' ', '-')}"
+'  followed you. Let's tweet with
+= "@#{@follower.id}-#{@follower.name.gsub(' ', '-')}"
+' .
+= root_url

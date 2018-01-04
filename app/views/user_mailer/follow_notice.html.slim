@@ -1,0 +1,13 @@
+h1
+  = @follower.name
+  |  followed you!
+p
+  ' Hi
+  = @user.name
+  | ,
+p
+  = link_to "@#{@follower.id}-#{@follower.name.gsub(' ', '-')}", user_url(@follower)
+  |  followed you!
+p
+  ' Let's tweet with
+  = link_to "@#{@follower.id}-#{@follower.name.gsub(' ', '-')}", user_url(@follower)

@@ -13,4 +13,9 @@
   = f.label :password_confirmation, "Confirmation"
   = f.password_field :password_confirmation, class:'form-control'
 
+  = f.label :follow_notice, class: "checkbox inline" do
+    = f.check_box :follow_notice
+    span When other user follows you, do you want to receive notice?
+
+
   = f.submit yield(:button_text), class: "btn btn-primary"
