@@ -17,7 +17,7 @@ class Micropost < ApplicationRecord
 
     def reply_user
       reply_user = ""
-      if content.match?(/(@[^\s]+)\s.*/)
+      if content.match(/(@[^\s]+)\s.*/)
         reply_users = content.scan(/@\d+\-[^\s]+\s/).map do |reply_user|
           reply_user.gsub(" ", "")
         end
