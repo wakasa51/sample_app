@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  namespace :api, { format:'json' } do
+    namespace :v1 do
+      resources :users, only: [:index, :show, :create, :destroy, :update] do
+        member do
+          get :feed, :following, :followers
+        end
+      end
+    end
+  end
   get 'password_resets/new'
-
   get 'password_resets/edit'
-
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
@@ -17,6 +24,8 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
+    resources :devloper_apps
+    resources :user_apps, only: [:index, :new, :create, :destroy]
   end
   resources :account_activations, only: [:edit]
   resources :password_resets, only:[:new, :create, :edit, :update]
