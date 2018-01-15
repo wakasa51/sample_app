@@ -1,0 +1,28 @@
+- provide(:title, @developer.name)
+h1 Registered Apps
+
+= link_to "Register App", new_user_dev_app_path, class: 'btn btn-success'
+
+= will_paginate @dev_apps
+
+table.table
+  thead.thead-default
+    tr
+      th #
+      th App Name
+      th Callback URL
+      th Date
+      th Delete
+  - @dev_apps.each_with_index do |dev_app, i|
+    tr
+      th scope="row" #{i+1}
+      td
+        = link_to dev_app.app_name, user_dev_app_path(user_id:dev_app.user_id, id:dev_app.id)
+      td
+        a href="#{dev_app.callback_url}" #{dev_app.callback_url}
+      td
+        = dev_app.created_at.strftime('%Y/%m/%d')
+      td
+        = link_to "delete", user_dev_app_path(user_id:dev_app.user_id, id:dev_app.id), method: :delete
+
+= will_paginate @dev_apps

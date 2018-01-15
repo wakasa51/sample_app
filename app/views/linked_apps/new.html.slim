@@ -1,0 +1,22 @@
+- provide(:title, "Authorize Application")
+h1 Authorize Application
+
+.row
+  .col-md-6.col-md-offset-3
+    = form_for(@accept_user, url: user_linked_apps_path) do |f|
+      = render 'shared/error_messages', object: f.object
+      .permission.bg-info
+        p.permit-text Do you give permission below to the application?
+        p.permit-text  - your profile, following, follower
+        p.permit-text  - your micropsts, feeds
+      - unless logged_in?
+        = f.label :email
+        = f.email_field :email, class:'form-control'
+
+        = f.label :password
+        = f.password_field :password, class:'form-control'
+
+      = hidden_field_tag :dev_app_id, @consumer.id
+
+      = f.submit "Accept", class: "btn btn-primary"
+      = link_to "Deny", root_url, class: 'btn btn-danger deny-btn'

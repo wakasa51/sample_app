@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_many :microposts, dependent: :destroy
+  has_many :linking_apps, class_name: "LinkedApp", foreign_key: "user_id", dependent: :destroy
+  has_many :linked_apps, through: :linking_apps, source: :dev_app
+  has_many :dev_apps, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
@@ -88,6 +91,18 @@ class User < ApplicationRecord
     followers.include?(other_user)
   end
 
+  def link(app)
+    linking_apps.create(dev_app_id: app.id, access_token: random_chars)
+  end
+
+  def unlink(app)
+    linking_apps.find_by(dev_app_id: app.id).destroy
+  end
+
+  def linked?(app)
+    linked_apps.include?(app)
+  end
+
   private
     def downcase_email
       self.email = email.downcase
@@ -96,5 +111,9 @@ class User < ApplicationRecord
     def create_activation_digest
       self.activation_token = User.new_token
       self.activation_digest = User.digest(activation_token)
+    end
+
+    def random_chars
+      SecureRandom.urlsafe_base64
     end
 end

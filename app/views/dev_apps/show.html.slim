@@ -1,0 +1,32 @@
+- provide(:title, "Application Information")
+h1 Application Information
+
+table.table
+  thead.thead-default
+    tr
+      th Items
+      th Information
+  tbody
+    tr
+      th scope="row" App Name
+      td
+        = @dev_app.app_name
+    tr
+      th scope="row" Contact Mail
+      td
+        = @dev_app.contact_mail
+    tr
+      th scope="row" Consumer ID
+      td
+        = @dev_app.consumer_id
+    tr
+      th scope="row" Consumer Secret
+      td
+        = @dev_app.consumer_secret
+    tr
+      th scope="row" Callback URL
+      td
+        = @dev_app.callback_url
+.dev-app-show
+  = link_to "Back", user_dev_apps_url, class: 'btn btn-primary'
+  = link_to "Edit", edit_user_dev_app_path, class: 'btn btn-success'

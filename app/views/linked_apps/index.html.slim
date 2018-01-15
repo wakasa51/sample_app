@@ -1,0 +1,26 @@
+- provide(:title, "Linked Apps")
+h1 Linked Apps
+
+= will_paginate @linked_apps
+
+table.table
+  thead.thead-default
+    tr
+      th #
+      th App Name
+      th App's URL
+      th Linked Date
+      th Delete
+  - @linked_apps.each_with_index do |link_app, i|
+    tr
+      th scope="row" #{i+1}
+      td
+        = link_app.app_name
+      td
+        a href="#{link_app.callback_url}" #{link_app.callback_url}
+      td
+        = link_app.created_at.strftime('%Y/%m/%d')
+      td
+        = link_to "delete", user_linked_app_path(user_id:@user.id, id:link_app.id), method: :delete
+
+= will_paginate @linked_apps

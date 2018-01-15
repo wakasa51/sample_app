@@ -1,0 +1,13 @@
+= form_for(@dev_app, url: user_dev_apps_path) do |f|
+  = render 'shared/error_messages', object: f.object
+
+  = f.label :app_name
+  = f.text_field :app_name, class:'form-control'
+
+  = f.label :contact_mail
+  = f.email_field :contact_mail, class:'form-control'
+
+  = f.label :callback_url
+  = f.text_field :callback_url, class:'form-control'
+
+  = f.submit yield(:button_text), class: "btn btn-success"

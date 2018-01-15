@@ -297,3 +297,32 @@ span.picture{
 .message_form{
   margin-bottom: 5px;
 }
+
+/* dev apps */
+.reg-btn{
+  width: auto;
+}
+
+.dev-app-show{
+  display: flex;
+  justify-content: space-between;
+}
+
+#reissue_secret{
+  margin: 5px 0;
+}
+
+/* linked app */
+.deny-btn{
+  width: 100%;
+  margin-top: 10px;
+}
+
+.permission{
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.permit-text{
+  margin: 0;
+}

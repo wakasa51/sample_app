@@ -24,6 +24,14 @@ followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
+# メッセージ
 User.second.send_messages.create!(content: "Hello Michael", to_user_id: User.first.id, created_at: 10.minutes.ago)
 User.first.send_messages.create!(content: "Hey Archer. How are you?", to_user_id: User.second.id)
 User.third.send_messages.create!(content: "Hi Michael", to_user_id: User.first.id)
+
+# アプリケーション登録
+user.dev_apps.create!(app_name: "Sample App", contact_mail: user.email, consumer_id: "jtioeahoghagioehaoiheoa", consumer_secret:"fjaljfalfjalahhgieige", callback_url:"https://sample-app-wakasa.herokuapp.com/")
+
+# アプリ連携
+app = DevApp.first
+user.linking_apps.create!(dev_app_id:app.id, access_token: "jfaojfoojatrehonvnxx")

@@ -24,8 +24,8 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
-    resources :devloper_apps
-    resources :user_apps, only: [:index, :new, :create, :destroy]
+    resources :dev_apps
+    resources :linked_apps, only: [:index, :new, :create, :destroy]
   end
   resources :account_activations, only: [:edit]
   resources :password_resets, only:[:new, :create, :edit, :update]

@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111014405) do
+ActiveRecord::Schema.define(version: 20180112083722) do
+
+  create_table "dev_apps", force: :cascade do |t|
+    t.string "app_name"
+    t.integer "user_id"
+    t.string "contact_mail"
+    t.string "consumer_id", null: false
+    t.string "consumer_secret", null: false
+    t.string "callback_url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_dev_apps_on_user_id"
+  end
+
+  create_table "linked_apps", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "dev_app_id"
+    t.string "access_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dev_app_id"], name: "index_linked_apps_on_dev_app_id"
+    t.index ["user_id", "dev_app_id"], name: "index_linked_apps_on_user_id_and_dev_app_id", unique: true
+    t.index ["user_id"], name: "index_linked_apps_on_user_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
@@ -56,7 +79,6 @@ ActiveRecord::Schema.define(version: 20180111014405) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.integer "follow_notice", default: 1, null: false
-    t.string "api_token"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

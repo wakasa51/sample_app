@@ -40,4 +40,19 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'dev-app test' do
+    let(:user){ create(:michael) }
+    let(:sample_app) { create(:twtr, :user_id => user.id) }
+
+    specify 'User link apps and unlink apps' do
+      user
+      sample_app
+      expect(user.linked?(sample_app)).to be false
+      user.link(sample_app)
+      expect(user.linked?(sample_app)).to be true
+      user.unlink(sample_app)
+      expect(user.linked?(sample_app)).to be false
+    end
+  end
 end
